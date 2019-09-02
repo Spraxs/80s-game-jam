@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 2f;
     // Update is called once per frame
     void Update()
-    {
+    {     //(Input.GetAxis("Horizontal") < 0)
         if (Input.GetAxis("Horizontal") < 0)
         {
             MoveLeft();
         }
-        if (Input.GetAxis("Horizontal") > 0)
+        //(Input.GetAxis("Horizontal") > 0)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             MoveRight();
         }
@@ -20,10 +21,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveLeft()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.Translate(-speed * Time.deltaTime, 0, 0);
     }
     private void MoveRight()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.Translate(speed * Time.deltaTime,0,0);
     }
 }
