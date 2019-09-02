@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerManager : MonoBehaviour
+{
+    private static PlayerManager instance;
+
+    public static Action<Player, float> PLAYER_DAMAGE;
+
+    public static PlayerManager GetInstance()
+    {
+        return instance;
+    }
+
+    [SerializeField]
+    [Range(0, 4)]
+    private int maxPlayers;
+
+    private List<Player> onlinePlayers = new List<Player>();
+
+    [SerializeField]
+    private GameObject playerPrefab;
+
+    void Awake()
+    {
+        instance = this;
+
+        // Create a amount of players
+        for (int i = 0; i < maxPlayers; i++)
+        {
+            GameObject gameObject = Instantiate(playerPrefab);
+
+            Player player = new Player(i, gameObject);
+
+            onlinePlayers.Add(player);
+
+            gameObject.GetComponent<Smash>().player = player;
+        }
+    }
+
+    void Start()
+    {
+        PLAYER_DAMAGE += OnPlayerDamage;
+    }
+
+    public Player GetPlayer(long id)
+    {
+        foreach(Player p in onlinePlayers)
+        {
+            if (p.GetId() == id) return p;
+        }
+
+        return null;
+    }
+
+    public List<Player> GetPlayers()
+    {
+        return onlinePlayers;
+    }
+
+    public void OnPlayerDamage(Player player, float health)
+    {
+        if (health == 0)
+        {
+            onlinePlayers.Remove(player);
+            Destroy(player.GetGameObject());
+
+            if (onlinePlayers.Count == 1)
+            {
+                Player winner = onlinePlayers[0];
+
+                Debug.Log("Player with id: " + winner.GetId() + " has won!");
+            }
+        }
+
+        Debug.Log("Player with id: " + player.GetId() + " his health is now " + health);
+    }
+}
+public enum DefenseType
+{
+    NONE, UP, MID, DOWN
+}
