@@ -264,7 +264,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116542180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.942, z: -0.774}
+  m_LocalPosition: {x: 0, y: 0.942, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -352,8 +352,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackUpDamage: 20
-  attackMidDamage: 10
-  attackDownDamage: 5
+  attackMidDamage: 13
+  attackDownDamage: 8
+  attackRange: 1.5
+  knockBackX: 3
+  knockBackY: 5
 --- !u!114 &1164826058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayers: 2
+  onlinePlayers: []
   playerPrefab: {fileID: 524088215549653199, guid: 3054b35db21f7d342a04a0a7d7d5824a,
     type: 3}
 --- !u!1 &1854197016
@@ -467,8 +471,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854197016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0930073, y: 0.22326797, z: 0.094437}
+  m_LocalPosition: {x: 0, y: -3.39, z: 0}
+  m_LocalScale: {x: 18.185303, y: 1.4466157, z: 0.094437}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

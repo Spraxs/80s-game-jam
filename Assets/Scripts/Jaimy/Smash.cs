@@ -26,6 +26,8 @@ public class Smash : MonoBehaviour
 
     private void AttackUp()
     {
+        
+
         Player target = GetTarget();
         if (target == null) return;
 
@@ -35,7 +37,7 @@ public class Smash : MonoBehaviour
             return;
         }
 
-        target.Damage(gameRules.attackUpDamage);
+        target.Damage(gameRules.attackUpDamage, player);
     }
 
     private void AttackMid()
@@ -49,7 +51,7 @@ public class Smash : MonoBehaviour
             return;
         }
 
-        target.Damage(gameRules.attackMidDamage);
+        target.Damage(gameRules.attackMidDamage, player);
     }
 
     private void AttackDown()
@@ -63,7 +65,7 @@ public class Smash : MonoBehaviour
             return;
         }
 
-        target.Damage(gameRules.attackDownDamage);
+        target.Damage(gameRules.attackDownDamage, player);
     }
 
     private Player GetTarget()
@@ -74,12 +76,16 @@ public class Smash : MonoBehaviour
 
         playerManager.GetPlayers().ForEach(p =>
         {
-            float pDis = Vector3.Distance(p.GetGameObject().transform.position, this.player.GetGameObject().transform.position);
-
-            if (distance > pDis)
+            if (p.GetId() != this.player.GetId())
             {
-                distance = pDis;
-                player = p;
+                float pDis = Vector3.Distance(p.GetGameObject().transform.position,
+                    this.player.GetGameObject().transform.position);
+
+                if (distance > pDis)
+                {
+                    distance = pDis;
+                    player = p;
+                }
             }
         });
 

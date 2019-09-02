@@ -8,21 +8,39 @@ public class Player : ScriptableObject
 
     public DefenseType defenseType;
 
+    private GameRules gameRules;
+
     public Player(long id, GameObject gameObject)
     {
+        defenseType = DefenseType.NONE;
+        gameRules = GameRules.GetInstance();
         this.id = id;
         this.gameObject = gameObject;
         health = 100f;
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, Player damager)
     {
-        health -= damage;
+        if (damager == null ||
+            damager.IsInRange(this, gameRules.attackRange) && damager.IsFacingPlayer(this))
+        {
 
-        if (health < 0) health = 0;
+            if (damager != null)
+            {
+                float x = gameRules.knockBackX * (damage / 10);
+                float y = gameRules.knockBackY * (damage / 10);
+                Vector2 knockback = new Vector2(x, y);
 
-        if (PlayerManager.PLAYER_DAMAGE == null) return;
-        PlayerManager.PLAYER_DAMAGE(this, health);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+            }
+
+            health -= damage;
+
+            if (health < 0) health = 0;
+
+            if (PlayerManager.PLAYER_DAMAGE == null) return;
+            PlayerManager.PLAYER_DAMAGE(this, health);
+        }
     }
 
     public long GetId()

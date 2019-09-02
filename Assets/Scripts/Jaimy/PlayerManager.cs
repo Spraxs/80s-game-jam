@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [Range(0, 4)]
     private int maxPlayers;
 
+    [SerializeField]
     private List<Player> onlinePlayers = new List<Player>();
 
     [SerializeField]

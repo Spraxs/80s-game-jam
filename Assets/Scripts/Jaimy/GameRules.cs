@@ -14,6 +14,12 @@ public class GameRules : MonoBehaviour
     [SerializeField]
     public float attackDownDamage;
 
+    [SerializeField] public float attackRange;
+
+    [SerializeField] public float knockBackX;
+
+    [SerializeField] public float knockBackY;
+
     private static GameRules instance;
 
     void Awake()
