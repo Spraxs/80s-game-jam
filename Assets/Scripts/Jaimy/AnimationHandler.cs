@@ -7,6 +7,7 @@ public class AnimationHandler : MonoBehaviour
 {
     private Animator animator;
 
+    [SerializeField] private string fallbackState;
     [SerializeField] private List<string> stateNames;
 
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class AnimationHandler : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        ResetAll();
+        ResetAllAnimations();
     }
 
     /*
@@ -23,7 +24,7 @@ public class AnimationHandler : MonoBehaviour
     public void PlayAnimation(string name)
     {
 
-        ResetAll();
+        ResetAllAnimations();
 
         animator.SetBool(name, true);
     }
@@ -41,7 +42,7 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool(stateName, true);
     }
 
-    public void ResetAll()
+    public void ResetAllAnimations()
     {
         foreach (string sName in stateNames)
         {

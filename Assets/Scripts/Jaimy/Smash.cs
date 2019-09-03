@@ -40,14 +40,8 @@ public class Smash : MonoBehaviour
 
     }
 
-    private void AttackUp()
+    public void DamageUp()
     {
-        if (!canAttackUp) return;
-
-        StartCoroutine(Cooldown(DefenseType.UP, gameRules.attackMidDelay));
-
-        animationHandler.PlayAnimation("isHeavy");
-
         Player target = GetTarget();
 
         if (target == null) return;
@@ -67,14 +61,17 @@ public class Smash : MonoBehaviour
         }
     }
 
-    private void AttackMid()
+    private void AttackUp()
     {
-        if (!canAttackMid) return;
+        if (!canAttackUp) return;
 
         StartCoroutine(Cooldown(DefenseType.UP, gameRules.attackMidDelay));
 
-        animationHandler.PlayAnimation("isPunching");
+        animationHandler.PlayAnimation("isHeavy");
+    }
 
+    private void DamageMid()
+    {
         Player target = GetTarget();
         if (target == null) return;
 
@@ -93,14 +90,17 @@ public class Smash : MonoBehaviour
         }
     }
 
-    private void AttackDown()
+    private void AttackMid()
     {
-        if (!canAttackDown) return;
+        if (!canAttackMid) return;
 
-        StartCoroutine(Cooldown(DefenseType.DOWN, gameRules.attackDownDelay));
+        StartCoroutine(Cooldown(DefenseType.UP, gameRules.attackMidDelay));
 
-        animationHandler.PlayAnimation("isKicking");
+        animationHandler.PlayAnimation("isPunching");
+    }
 
+    private void DamageDown()
+    {
         Player target = GetTarget();
         if (target == null) return;
 
@@ -116,6 +116,15 @@ public class Smash : MonoBehaviour
 
             target.Damage(gameRules.attackDownDamage, player);
         }
+    }
+
+    private void AttackDown()
+    {
+        if (!canAttackDown) return;
+
+        StartCoroutine(Cooldown(DefenseType.DOWN, gameRules.attackDownDelay));
+
+        animationHandler.PlayAnimation("isKicking");
     }
 
     private Player GetTarget()
