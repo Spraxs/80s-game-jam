@@ -23,13 +23,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontal < 0)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
             //transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
         if (horizontal > 0)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
             //transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }

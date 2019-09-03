@@ -64,8 +64,8 @@ public class Player
     {
         // If scale is -1, character is facing left. Is scale is 1, character is facing right.
 
-        return (!gameObject.GetComponent<SpriteRenderer>().flipX && player.gameObject.transform.position.x > gameObject.transform.position.x
-            || gameObject.GetComponent<SpriteRenderer>().flipX && player.gameObject.transform.position.x < gameObject.transform.position.x);
+        return (gameObject.GetComponent<SpriteRenderer>().flipX && player.gameObject.transform.position.x > gameObject.transform.position.x
+            || !gameObject.GetComponent<SpriteRenderer>().flipX && player.gameObject.transform.position.x < gameObject.transform.position.x);
     }
 
     public static Player ById(long id)
