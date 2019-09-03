@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c544724fea124e847bf9e7ed1bf8bb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fill: {fileID: 9037713611443122093}
   healthBar: {fileID: 6669686349577990734}
 --- !u!1 &671867912838037351
 GameObject:
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26853782, g: 0.9622642, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.32040966, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
