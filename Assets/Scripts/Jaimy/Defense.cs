@@ -8,6 +8,9 @@ public class Defense : MonoBehaviour
     private PlayerManager playerManager;
     private AnimationHandler animationHandler;
 
+    [SerializeField] private AudioClip blockUpClip;
+    [SerializeField] private AudioClip blockDownClip;
+
     public Player player; // Refrence to current player object
 
     private bool canDefense = true;
@@ -29,6 +32,8 @@ public class Defense : MonoBehaviour
 
         if (player.defenseType == DefenseType.UP) return;
 
+        SoundManager.Instance.Play(blockUpClip);
+
         player.defenseType = DefenseType.UP;
 
         Debug.Log("Defense: " + player.defenseType);
@@ -39,6 +44,9 @@ public class Defense : MonoBehaviour
         animationHandler.PlayAnimationIfNotPlaying("isBlocking", stateNames);
 
         if (player.defenseType == DefenseType.MID) return;
+
+        SoundManager.Instance.Play(blockUpClip);
+
         player.defenseType = DefenseType.MID;
 
         Debug.Log("Defense: " + player.defenseType);
@@ -49,6 +57,9 @@ public class Defense : MonoBehaviour
         animationHandler.PlayAnimationIfNotPlaying("isBlocking", stateNames);
 
         if (player.defenseType == DefenseType.DOWN) return;
+
+        SoundManager.Instance.Play(blockUpClip);
+
         player.defenseType = DefenseType.DOWN;
 
         Debug.Log("Defense: " + player.defenseType);
@@ -56,11 +67,15 @@ public class Defense : MonoBehaviour
 
     public void DefenseStop(float delay)
     {
+
         animationHandler.ResetAnimation("isBlocking");
 
         if (!canDefense) return;
 
         if (player.defenseType == DefenseType.NONE) return;
+
+        SoundManager.Instance.Play(blockDownClip);
+
         player.defenseType = DefenseType.NONE;
 
         Debug.Log("Defense: " + player.defenseType);

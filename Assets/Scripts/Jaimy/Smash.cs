@@ -17,6 +17,10 @@ public class Smash : MonoBehaviour
     [SerializeField] private AudioClip midHitClip;
     [SerializeField] private AudioClip downHitClip;
 
+    [SerializeField] private AudioClip attackUpClip;
+    [SerializeField] private AudioClip attackMidClip;
+    [SerializeField] private AudioClip attackDownClip;
+
     private bool canAttackUp = true;
     private bool canAttackMid = true;
     private bool canAttackDown = true;
@@ -44,6 +48,8 @@ public class Smash : MonoBehaviour
 
     public void DamageUp()
     {
+        SoundManager.Instance.Play(attackUpClip);
+
         Player target = GetTarget();
 
         if (target == null) return;
@@ -74,6 +80,8 @@ public class Smash : MonoBehaviour
 
     private void DamageMid()
     {
+        SoundManager.Instance.Play(attackMidClip);
+
         Player target = GetTarget();
         if (target == null) return;
 
@@ -103,6 +111,8 @@ public class Smash : MonoBehaviour
 
     private void DamageDown()
     {
+        SoundManager.Instance.Play(attackDownClip);
+
         Player target = GetTarget();
         if (target == null) return;
 

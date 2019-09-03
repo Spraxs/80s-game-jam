@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32371619b4c77c47b3d6d82faea7a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockUpClip: {fileID: 8300000, guid: fef83377481d980469a74d969858dbbb, type: 3}
+  blockDownClip: {fileID: 8300000, guid: 6669499c62fde8f4abe3264fd8939410, type: 3}
 --- !u!114 &524088215549653186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +229,9 @@ MonoBehaviour:
   upHitClip: {fileID: 8300000, guid: 28d1eddee26f4b441971d2969a5bab78, type: 3}
   midHitClip: {fileID: 8300000, guid: 8a7de0ea9753aa4459d443e13c91e5df, type: 3}
   downHitClip: {fileID: 8300000, guid: 8b6c3678b0c500a40a973d33fcfcb633, type: 3}
+  attackUpClip: {fileID: 8300000, guid: cc32c6f98d7424d44ab997c779d1a449, type: 3}
+  attackMidClip: {fileID: 8300000, guid: f1da63dde018bca408d471dc3adacb7c, type: 3}
+  attackDownClip: {fileID: 8300000, guid: 5f519945984305d4fb59c66f4edf7165, type: 3}
 --- !u!114 &-2485823804942705656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f14dc3d99159bd4d993d46fa7d11afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallbackState: 
   stateNames:
   - isPunching
   - isKicking
