@@ -16,10 +16,10 @@ public class HealthBar : MonoBehaviour
     {
         player = GetComponent<Smash>().player;
 
-        if (player.GetId() == 0){
-            Fill.color = new Color(0, 1, 0, 1);
-        
-      }
+        if (player.GetId() == 0)
+        {
+            Fill.color = new Color(0, 1, 0, 1);        
+        }
         else if (player.GetId() == 1)
         {
             Fill.color = new Color(1, 0, 0, 1);
