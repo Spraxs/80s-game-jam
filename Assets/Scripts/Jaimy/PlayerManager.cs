@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     private static PlayerManager instance;
 
     public static Action<Player, float> PLAYER_DAMAGE;
+
+    [SerializeField] private GameObject greenWon;
+    [SerializeField] private GameObject redWon;
 
     public static PlayerManager GetInstance()
     {
@@ -78,11 +83,26 @@ public class PlayerManager : MonoBehaviour
             {
                 Player winner = onlinePlayers[0];
 
-                Debug.Log("Player with id: " + winner.GetId() + " has won!");
+                if (winner.GetId() == 0)
+                {
+                    greenWon.SetActive(true);
+                } else if (winner.GetId() == 1)
+                {
+                    redWon.SetActive(true);
+                }
+
+                StartCoroutine(ResetScene());
             }
         }
 
         Debug.Log("Player with id: " + player.GetId() + " his health is now " + health);
+    }
+
+    private IEnumerator ResetScene()
+    {
+        yield return new WaitForSeconds(10f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 public enum DefenseType
