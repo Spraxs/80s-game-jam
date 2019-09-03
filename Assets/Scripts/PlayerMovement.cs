@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     private SpriteRenderer spriteRenderer;
+    private AnimationHandler animationHandler;
 
     void Start()
     {
+        animationHandler = GetComponent<AnimationHandler>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         InputManager.INPUT_ACTION += ReceiveInput;
     }
@@ -20,13 +22,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (horizontal != 0)
+        {
+            animationHandler.PlayAnimation("isWalking");
+        }
+        else
+        {
+            animationHandler.ResetAnimation("isWalking");
+        }
 
         if (horizontal < 0)
         {
             spriteRenderer.flipX = false;
             //transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             transform.Translate(-speed * Time.deltaTime, 0, 0);
-        }
+        } else
         if (horizontal > 0)
         {
             spriteRenderer.flipX = true;

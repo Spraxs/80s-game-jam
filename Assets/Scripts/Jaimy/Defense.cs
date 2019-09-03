@@ -6,6 +6,7 @@ using UnityEngine;
 public class Defense : MonoBehaviour
 {
     private PlayerManager playerManager;
+    private AnimationHandler animationHandler;
 
     public Player player; // Refrence to current player object
 
@@ -14,6 +15,7 @@ public class Defense : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animationHandler = GetComponent<AnimationHandler>();
         playerManager = PlayerManager.GetInstance();
 
         InputManager.INPUT_ACTION += ReceiveInput;
@@ -21,6 +23,8 @@ public class Defense : MonoBehaviour
 
     private void DefenseUp()
     {
+        animationHandler.PlayAnimation("isBlocking");
+
         if (player.defenseType == DefenseType.UP) return;
 
         player.defenseType = DefenseType.UP;
@@ -30,6 +34,8 @@ public class Defense : MonoBehaviour
 
     private void DefenseMid()
     {
+        animationHandler.PlayAnimation("isBlocking");
+
         if (player.defenseType == DefenseType.MID) return;
         player.defenseType = DefenseType.MID;
 
@@ -38,6 +44,8 @@ public class Defense : MonoBehaviour
 
     private void DefenseDown()
     {
+        animationHandler.PlayAnimation("isBlocking");
+
         if (player.defenseType == DefenseType.DOWN) return;
         player.defenseType = DefenseType.DOWN;
 
@@ -46,6 +54,8 @@ public class Defense : MonoBehaviour
 
     public void DefenseStop(float delay)
     {
+        animationHandler.ResetAnimation("isBlocking");
+
         if (!canDefense) return;
 
         if (player.defenseType == DefenseType.NONE) return;

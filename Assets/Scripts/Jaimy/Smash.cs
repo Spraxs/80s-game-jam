@@ -6,6 +6,7 @@ public class Smash : MonoBehaviour
 {
     private PlayerManager playerManager;
     private GameRules gameRules;
+    private AnimationHandler animationHandler;
 
     public Player player; // Refrence to current player object
 
@@ -25,6 +26,7 @@ public class Smash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animationHandler = GetComponent<AnimationHandler>();
         defense = GetComponent<Defense>();
         gameRules = GameRules.GetInstance();
         playerManager = PlayerManager.GetInstance();
@@ -43,6 +45,8 @@ public class Smash : MonoBehaviour
         if (!canAttackUp) return;
 
         StartCoroutine(Cooldown(DefenseType.UP, gameRules.attackMidDelay));
+
+        animationHandler.PlayAnimation("isHeavy");
 
         Player target = GetTarget();
 
@@ -69,6 +73,8 @@ public class Smash : MonoBehaviour
 
         StartCoroutine(Cooldown(DefenseType.UP, gameRules.attackMidDelay));
 
+        animationHandler.PlayAnimation("isPunching");
+
         Player target = GetTarget();
         if (target == null) return;
 
@@ -92,6 +98,8 @@ public class Smash : MonoBehaviour
         if (!canAttackDown) return;
 
         StartCoroutine(Cooldown(DefenseType.DOWN, gameRules.attackDownDelay));
+
+        animationHandler.PlayAnimation("isKicking");
 
         Player target = GetTarget();
         if (target == null) return;
