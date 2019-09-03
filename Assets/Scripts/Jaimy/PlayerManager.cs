@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
             onlinePlayers.Add(player);
 
             gameObject.GetComponent<Smash>().player = player;
+            gameObject.GetComponent<PlayerMovement>().player = player;
         }
     }
 

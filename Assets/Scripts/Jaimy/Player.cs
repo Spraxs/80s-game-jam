@@ -29,6 +29,12 @@ public class Player : ScriptableObject
             {
                 float x = gameRules.knockBackX * (damage / 10);
                 float y = gameRules.knockBackY * (damage / 10);
+
+                if (gameObject.transform.position.x < damager.gameObject.transform.position.x)
+                {
+                    x = -x;
+                }
+
                 Vector2 knockback = new Vector2(x, y);
 
                 gameObject.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);

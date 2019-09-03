@@ -5,26 +5,46 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 2f;
+
+    public Player player;
+
+    private float horizontal;
+
+    void Start()
+    {
+        InputManager.INPUT_ACTION += ReceiveInput;
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {     //(Input.GetAxis("Horizontal") < 0)
-        if (Input.GetAxis("Horizontal") < 0)
+        if (horizontal < 0)
         {
-            MoveLeft();
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
         //(Input.GetAxis("Horizontal") > 0)
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (horizontal > 0)
         {
-            MoveRight();
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
         }
     }
 
     private void MoveLeft()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        
     }
     private void MoveRight()
     {
-        transform.Translate(speed * Time.deltaTime,0,0);
+
+    }
+
+    public void ReceiveInput(InputType inputType, float value, int controllerId)
+    {
+        if (inputType == InputType.HORIZONTAL && controllerId == player.GetId())
+        {
+            if (horizontal != value) horizontal = value;
+        }
     }
 }

@@ -94,17 +94,17 @@ public class Smash : MonoBehaviour
 
     public void ReceiveInput(InputType inputType, float value, int controllerId)
     {
-        if (inputType == InputType.ATTACK_UP && value > 0)
+        if (inputType == InputType.ATTACK_UP && value > 0 && controllerId == player.GetId())
         {
             AttackUp();
         } else
 
-        if (inputType == InputType.ATTACK_MID && value > 0)
+        if (inputType == InputType.ATTACK_MID && value > 0 && controllerId == player.GetId())
         {
             AttackMid();
         } else
 
-        if (inputType == InputType.ATTACK_DOWN && value > 0)
+        if (inputType == InputType.ATTACK_DOWN && value > 0 && controllerId == player.GetId())
         {
             AttackDown();
         }
