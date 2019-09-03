@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private AnimationHandler animationHandler;
 
+    private string[] stateNames = { "isPunching", "isHeavy", "isKicking" };
+
     void Start()
     {
         animationHandler = GetComponent<AnimationHandler>();
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (horizontal != 0)
         {
-            animationHandler.PlayAnimation("isWalking");
+            animationHandler.PlayAnimationIfNotPlaying("isWalking", stateNames);
         }
         else
         {

@@ -19,11 +19,18 @@ public class InputManager : MonoBehaviour
          * Controller 0 
          */
 
-        float horizontal = Input.GetAxis("horizontal");
-        if (horizontal != prevHorizontal)
+        float horizontal = Input.GetAxis("Horizontal");
+
+
+        if (horizontal > .1f || horizontal < .1f)
         {
             prevHorizontal = horizontal;
             INPUT_ACTION(InputType.HORIZONTAL, horizontal, 0);
+        }
+        else
+        {
+            prevHorizontal = 0f;
+            INPUT_ACTION(InputType.HORIZONTAL, 0f, 0);
         }
 
         if (Input.GetButtonUp("attack_up"))
@@ -62,7 +69,7 @@ public class InputManager : MonoBehaviour
          * Controller 1
          */
 
-        float horizontal1 = Input.GetAxis("horizontal_1");
+        float horizontal1 = Input.GetAxis("Horizontal_1");
         if (horizontal1 != prevHorizontal1)
         {
             prevHorizontal1 = horizontal1;
