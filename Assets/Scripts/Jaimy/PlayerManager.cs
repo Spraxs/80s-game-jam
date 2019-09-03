@@ -10,9 +10,6 @@ public class PlayerManager : MonoBehaviour
 
     public static Action<Player, float> PLAYER_DAMAGE;
 
-    [SerializeField] private GameObject greenWon;
-    [SerializeField] private GameObject redWon;
-
     public static PlayerManager GetInstance()
     {
         return instance;
@@ -83,27 +80,14 @@ public class PlayerManager : MonoBehaviour
             {
                 Player winner = onlinePlayers[0];
 
-                if (winner.GetId() == 0)
-                {
-                    greenWon.SetActive(true);
-                } else if (winner.GetId() == 1)
-                {
-                    redWon.SetActive(true);
-                }
-
-                StartCoroutine(ResetScene());
+                FindObjectOfType<LevelManager>().EndGame(winner);
             }
         }
 
         Debug.Log("Player with id: " + player.GetId() + " his health is now " + health);
     }
 
-    private IEnumerator ResetScene()
-    {
-        yield return new WaitForSeconds(10f);
-
-        SceneManager.LoadScene(0);
-    }
+   
 }
 public enum DefenseType
 {

@@ -22,7 +22,7 @@ public class AnimationHandler : MonoBehaviour
      */
     public void PlayAnimation(string name)
     {
-
+        if (animator == null) return;
         ResetAllAnimations();
 
         animator.SetBool(name, true);
@@ -33,6 +33,7 @@ public class AnimationHandler : MonoBehaviour
      */
     public void PlayAnimationIfNotPlaying(string stateName, string[] stateNames)
     {
+        if (animator == null) return;
         foreach (string sName in stateNames)
         {
             if (animator.GetBool(sName)) return;
@@ -43,6 +44,7 @@ public class AnimationHandler : MonoBehaviour
 
     public void ResetAllAnimations()
     {
+        if (animator == null) return;
         foreach (string sName in stateNames)
         {
             animator.SetBool(sName, false);
@@ -54,6 +56,7 @@ public class AnimationHandler : MonoBehaviour
      */
     public void ResetAnimation(string stateName)
     {
+        if (animator == null) return;
         animator.SetBool(stateName, false);
     }
 }
