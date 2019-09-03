@@ -4,7 +4,7 @@ public class Player : ScriptableObject
     private long id;
     private GameObject gameObject;
 
-    private float health;
+    public float health;
 
     public DefenseType defenseType;
 
