@@ -43,6 +43,21 @@ public class InputManager : MonoBehaviour
             INPUT_ACTION(InputType.ATTACK_DOWN, 1f, 0);
         }
 
+        else if (Input.GetButton("defense_up"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_UP, 1f, 0);
+        } else if (Input.GetButton("defense_mid"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_MID, 1f, 0);
+        }
+        else if (Input.GetButton("defense_down"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_DOWN, 1f, 0);
+        } else
+        {
+            INPUT_ACTION(InputType.DEFENSE_UP, 0f, 0); // No defense
+        }
+
         /*
          * Controller 1
          */
@@ -75,5 +90,7 @@ public class InputManager : MonoBehaviour
 
 public enum InputType
 {
-    ATTACK_UP, ATTACK_MID, ATTACK_DOWN, DEFENSE_UP, DEFENSE_MID, DEFENSE_DOWN, HORIZONTAL
+    ATTACK_UP, ATTACK_MID, ATTACK_DOWN,
+    DEFENSE_UP, DEFENSE_MID, DEFENSE_DOWN,
+    HORIZONTAL
 }

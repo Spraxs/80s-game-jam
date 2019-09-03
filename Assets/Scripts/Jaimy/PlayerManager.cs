@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
             onlinePlayers.Add(player);
 
             gameObject.GetComponent<Smash>().player = player;
+            gameObject.GetComponent<Defense>().player = player;
             gameObject.GetComponent<PlayerMovement>().player = player;
         }
     }
@@ -54,6 +55,11 @@ public class PlayerManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public int GetPlayerAmount()
+    {
+        return onlinePlayers.Count;
     }
 
     public List<Player> GetPlayers()

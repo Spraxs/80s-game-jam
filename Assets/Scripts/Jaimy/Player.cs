@@ -21,9 +21,6 @@ public class Player : ScriptableObject
 
     public void Damage(float damage, Player damager)
     {
-        if (damager == null ||
-            damager.IsInRange(this, gameRules.attackRange) && damager.IsFacingPlayer(this))
-        {
 
             if (damager != null)
             {
@@ -46,7 +43,6 @@ public class Player : ScriptableObject
 
             if (PlayerManager.PLAYER_DAMAGE == null) return;
             PlayerManager.PLAYER_DAMAGE(this, health);
-        }
     }
 
     public long GetId()

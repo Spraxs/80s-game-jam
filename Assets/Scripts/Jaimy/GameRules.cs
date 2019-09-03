@@ -20,6 +20,16 @@ public class GameRules : MonoBehaviour
 
     [SerializeField] public float knockBackY;
 
+    [SerializeField] public float defenseDelay;
+
+    [SerializeField] public float attackUpDelay;
+
+    [SerializeField] public float attackMidDelay;
+
+    [SerializeField] public float attackDownDelay;
+
+    [SerializeField] public float attackDelay;
+
     private static GameRules instance;
 
     void Awake()
