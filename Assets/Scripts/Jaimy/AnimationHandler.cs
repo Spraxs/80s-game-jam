@@ -7,7 +7,6 @@ public class AnimationHandler : MonoBehaviour
 {
     private Animator animator;
 
-    [SerializeField] private string fallbackState;
     [SerializeField] private List<string> stateNames;
 
     // Start is called before the first frame update

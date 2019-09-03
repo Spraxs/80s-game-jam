@@ -38,6 +38,8 @@ public class Smash : MonoBehaviour
     {
         SoundManager.Instance.Play(blockClip);
 
+        player.GetGameObject().GetComponent<AnimationHandler>().PlayAnimation("isBlocking2");
+
     }
 
     public void DamageUp()

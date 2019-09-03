@@ -12,6 +12,8 @@ public class Defense : MonoBehaviour
 
     private bool canDefense = true;
 
+    private string[] stateNames = { "isBlocking2" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class Defense : MonoBehaviour
 
     private void DefenseUp()
     {
-        animationHandler.PlayAnimation("isBlocking");
+        animationHandler.PlayAnimationIfNotPlaying("isBlocking", stateNames);
 
         if (player.defenseType == DefenseType.UP) return;
 
@@ -34,7 +36,7 @@ public class Defense : MonoBehaviour
 
     private void DefenseMid()
     {
-        animationHandler.PlayAnimation("isBlocking");
+        animationHandler.PlayAnimationIfNotPlaying("isBlocking", stateNames);
 
         if (player.defenseType == DefenseType.MID) return;
         player.defenseType = DefenseType.MID;
@@ -44,7 +46,7 @@ public class Defense : MonoBehaviour
 
     private void DefenseDown()
     {
-        animationHandler.PlayAnimation("isBlocking");
+        animationHandler.PlayAnimationIfNotPlaying("isBlocking", stateNames);
 
         if (player.defenseType == DefenseType.DOWN) return;
         player.defenseType = DefenseType.DOWN;

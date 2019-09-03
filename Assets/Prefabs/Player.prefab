@@ -311,12 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f14dc3d99159bd4d993d46fa7d11afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallbackState: 
   stateNames:
   - isPunching
   - isKicking
   - isHeavy
   - isWalking
   - isBlocking
+  - isBlocking2
 --- !u!1 &671867912838037351
 GameObject:
   m_ObjectHideFlags: 0
