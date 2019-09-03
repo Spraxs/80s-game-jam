@@ -11,6 +11,10 @@ public class Defense : MonoBehaviour
     [SerializeField] private AudioClip blockUpClip;
     [SerializeField] private AudioClip blockDownClip;
 
+    [SerializeField] private float noiceDelay;
+
+    private bool canMakeNoice = true;
+
     public Player player; // Refrence to current player object
 
     private bool canDefense = true;
@@ -32,7 +36,7 @@ public class Defense : MonoBehaviour
 
         if (player.defenseType == DefenseType.UP) return;
 
-        SoundManager.Instance.Play(blockUpClip);
+        PlayBlockSoundUp();
 
         player.defenseType = DefenseType.UP;
 
@@ -45,7 +49,7 @@ public class Defense : MonoBehaviour
 
         if (player.defenseType == DefenseType.MID) return;
 
-        SoundManager.Instance.Play(blockUpClip);
+        PlayBlockSoundUp();
 
         player.defenseType = DefenseType.MID;
 
@@ -58,7 +62,7 @@ public class Defense : MonoBehaviour
 
         if (player.defenseType == DefenseType.DOWN) return;
 
-        SoundManager.Instance.Play(blockUpClip);
+        PlayBlockSoundUp();
 
         player.defenseType = DefenseType.DOWN;
 
@@ -74,7 +78,7 @@ public class Defense : MonoBehaviour
 
         if (player.defenseType == DefenseType.NONE) return;
 
-        SoundManager.Instance.Play(blockDownClip);
+        PlayBlockSoundDown();
 
         player.defenseType = DefenseType.NONE;
 
@@ -90,6 +94,33 @@ public class Defense : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         canDefense = true;
+    }
+
+    private void PlayBlockSoundUp()
+    {
+        if (canMakeNoice)
+        {
+            StartCoroutine(NoiceCooldown());
+            SoundManager.Instance.Play(blockUpClip);
+        }
+    }
+
+    private void PlayBlockSoundDown()
+    {
+        if (canMakeNoice)
+        {
+            StartCoroutine(NoiceCooldown());
+            SoundManager.Instance.Play(blockDownClip);
+        }
+    }
+
+    private IEnumerator NoiceCooldown()
+    {
+        canMakeNoice = false;
+
+        yield return new WaitForSeconds(noiceDelay);
+
+        canMakeNoice = true;
     }
 
     public void ReceiveInput(InputType inputType, float value, int controllerId)
