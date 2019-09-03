@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Player : ScriptableObject
+public class Player
 {
     private long id;
     private GameObject gameObject;
