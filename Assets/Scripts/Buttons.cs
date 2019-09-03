@@ -13,12 +13,12 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("HomeMenu");
     }
-    public void StartScene()
+    public void CharacterSelect()
     {
         SceneManager.LoadScene("CharacterSelect");
     }
     public void BeginGame()
     {
-        SceneManager.LoadScene("InGameTest");
+        SceneManager.LoadScene("MainScene");
     }
 }
