@@ -6,6 +6,7 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject PauseUI;
     public bool paused = false;
+    public GameObject PauseScreen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,6 +17,7 @@ public class PauseScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            PauseScreen.SetActive(true);
             TogglePause();
         }
         if (paused)
@@ -27,6 +29,7 @@ public class PauseScript : MonoBehaviour
         if (!paused)
         {
             PauseUI.SetActive(false);
+            PauseScreen.SetActive(false);
             Time.timeScale = 1;
         }
     }
