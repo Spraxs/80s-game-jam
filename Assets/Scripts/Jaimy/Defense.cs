@@ -125,28 +125,28 @@ public class Defense : MonoBehaviour
 
     public void ReceiveInput(InputType inputType, float value, int controllerId)
     {
+
         if (playerManager.GetPlayerAmount() <= 1) return;
-        if (controllerId != player.GetId()) return;
         if (!canDefense) return;
 
         if (inputType == InputType.ATTACK_UP || inputType == InputType.ATTACK_MID || inputType == InputType.ATTACK_DOWN && value > 0) return;
 
-        if (inputType == InputType.DEFENSE_UP && value > 0)
+        if (inputType == InputType.DEFENSE_UP && value > 0 && controllerId == player.GetId())
         {
             DefenseUp();
         }
         else
 
-        if (inputType == InputType.DEFENSE_MID && value > 0)
+        if (inputType == InputType.DEFENSE_MID && value > 0 && controllerId == player.GetId())
         {
             DefenseMid();
         }
         else
 
-        if (inputType == InputType.DEFENSE_DOWN && value > 0)
+        if (inputType == InputType.DEFENSE_DOWN && value > 0 && controllerId == player.GetId())
         {
             DefenseDown();
-        } else if (inputType == InputType.DEFENSE_UP && value == 0)
+        } else if (inputType == InputType.DEFENSE_UP && value == 0 && controllerId == player.GetId())
         {
             DefenseStop(0f);
         }

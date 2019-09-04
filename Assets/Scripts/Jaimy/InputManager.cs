@@ -92,6 +92,22 @@ public class InputManager : MonoBehaviour
         {
             INPUT_ACTION(InputType.ATTACK_DOWN, 1f, 1);
         }
+        else if (Input.GetButton("defense_up_1"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_UP, 1f, 1);
+        }
+        else if (Input.GetButton("defense_mid_1"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_MID, 1f, 1);
+        }
+        else if (Input.GetButton("defense_down_1"))
+        {
+            INPUT_ACTION(InputType.DEFENSE_DOWN, 1f, 1);
+        }
+        else
+        {
+            INPUT_ACTION(InputType.DEFENSE_UP, 0f, 1); // No defense
+        }
     }
 }
 
