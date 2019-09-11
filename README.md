@@ -4,5 +4,10 @@
 |Media College 3e leerjaar 2019|
 |Sem Satoer en Jaimy Putter    |
 
-2D fighting game
+dit is een 2D fighting game, in 80's style.
+dit project hebben we gemaakt voor een Game Jam op het 
+Media College, in 2 dagen tijd.
+
+
+
 
