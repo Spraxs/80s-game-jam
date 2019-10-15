@@ -8,6 +8,8 @@ dit is een 2D fighting game, in 80's style.
 dit project hebben we gemaakt voor een Game Jam op het 
 Media College, in 2 dagen tijd.
 
+# [Jaimy's scripts] (lol.nl)
+
 
 
 
